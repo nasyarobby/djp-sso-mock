@@ -1,3 +1,10 @@
+# restify-jsend
+
+REST API server using restify for the engine and jsend for response standard.
+Fork and build your project.
+
+## Environment Variables
+
 ```
 APP_SERVER_PORT=3000
 APP_LOG_OUTPUT=CONSOLE
