@@ -1,4 +1,6 @@
 require("dotenv").config();
+const SsoService = require("./SsoService");
+const DataProvider = require("./SimpleDataProvider");
 
 const APP_CONFIG = {
   PORT: process.env.APP_SERVER_PORT || 3000,
@@ -12,9 +14,37 @@ const log =
 
 const server = require("./Server");
 
-server.get("/", function (req, res, next) {
-  res.jsend.success({ foo: "bar" });
+const sso = new SsoService({
+  authenticator: (npwp, password, user) => {
+    if (user) {
+      return user.password === password;
+    } else {
+      return false;
+    }
+  },
+  dataProvider: new DataProvider({ jsonFile: "./data/wajibpajak.json" }),
 });
+
+server.post("/login", login);
+
+function login(req, res, next) {
+  const npwp = req.body && req.body.npwp;
+  const password = req.body && req.body.password;
+
+  if (npwp && password) {
+    const authenticated = sso.login(npwp, password);
+    if (authenticated) {
+      return res.jsend.success(authenticated);
+    } else {
+      return res.jsend.fail({ login: "Login gagal." });
+    }
+  } else {
+    return res.jsend.fail({
+      npwp: npwp ? undefined : "wajib diisi",
+      password: password ? undefined : "wajib diisi",
+    });
+  }
+}
 
 server.listen(APP_CONFIG.PORT, (err) => {
   if (err) {
