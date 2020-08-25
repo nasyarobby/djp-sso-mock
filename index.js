@@ -1,10 +1,13 @@
 require("dotenv").config();
 const SsoService = require("./SsoService");
 const DataProvider = require("./SimpleDataProvider");
+const jwt = require("jsonwebtoken");
 
 const APP_CONFIG = {
-  PORT: process.env.APP_SERVER_PORT || 3000,
+  PORT: process.env.APP_SERVER_PORT || 3002,
   LOG_OUTPUT: process.env.APP_LOG_OUTPUT || "CONSOLE",
+  JWT_TOKEN: process.env.JWT_TOKEN || "simplesso",
+  JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN || "2h",
 };
 
 const log =
@@ -34,7 +37,10 @@ function login(req, res, next) {
   if (npwp && password) {
     const authenticated = sso.login(npwp, password);
     if (authenticated) {
-      return res.jsend.success(authenticated);
+      const token = jwt.sign(authenticated, APP_CONFIG.JWT_TOKEN, {
+        expiresIn: APP_CONFIG.JWT_EXPIRES_IN,
+      });
+      return res.jsend.success({ token });
     } else {
       return res.jsend.fail({ login: "Login gagal." });
     }
