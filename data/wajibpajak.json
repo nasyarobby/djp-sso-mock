@@ -3,6 +3,32 @@
     "npwp": "012223334731000",
     "nama": "PT KAYU SEJATI PERMAI",
     "kodeKppAdm": "731",
-    "password": "123456"
+    "password": "123456",
+    "alamat": "Jalan. Industri No.1 Banjarmasin",
+    "role": "badan"
+  },
+  {
+    "npwp": "023004005901000",
+    "nama": "CV. PELIPUR LARA",
+    "kodeKppAdm": "901",
+    "password": "123456",
+    "alamat": "JALAN RAYA DEWATA NO.52-54, DENPASAR",
+    "role": "badan"
+  },
+  {
+    "npwp": "141012027205000",
+    "nama": "SRI AYU NINGSIH",
+    "kodeKppAdm": "205",
+    "password": "123456",
+    "alamat": "KOMP. MATARAM NO.2 RT.001 RW.003, PADANG BARAT",
+    "role": "op"
+  },
+  {
+    "npwp": "728009005017000",
+    "nama": "APRIL NOVEMBERIA",
+    "kodeKppAdm": "017",
+    "password": "123456",
+    "alamat": "JALAN PASAR MINGGU NO.299, PASAR MINGGU, JAKARTA SELATAN",
+    "role": "op"
   }
 ]
