@@ -30,5 +30,13 @@
     "password": "123456",
     "alamat": "JALAN PASAR MINGGU NO.299, PASAR MINGGU, JAKARTA SELATAN",
     "role": "op"
+  },
+  {
+    "npwp": "012003004028000",
+    "nama": "CV. PRATAMA KOMUNIKASI",
+    "kodeKppAdm": "028",
+    "password": "123456",
+    "alamat": "JALAN SOMEWHERE I BELONG, JAKARTA SELATAN",
+    "role": "badan"
   }
 ]
